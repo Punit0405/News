@@ -7,23 +7,7 @@ class newscontroller {
             const newnews = new news({
                 Title, Description, date, Author, Location, tags, total_views
             })
-            const passdate = new Date(date);
-            const currentdate = new Date();
-            console.log(currentdate.toDateString());
-            console.log(passdate.toDateString());
-            if (total_views > 100) {
-                newnews.category = "top"
-            }
-            else if (total_views > 50 && total_views < 100) {
-                newnews.category = "trending"
-            }
-            else if (passdate.toDateString() == currentdate.toDateString()) {
-                newnews.category = "new"
-            }
-            else if (total_views > 50 && passdate.toDateString() == currentdate.toDateString()) {
-                newnews.category = "trending";
-                console.log("same");
-            }
+
             newnews.save();
             res.send("News Added Successfully");
         } catch (error) {
@@ -36,7 +20,22 @@ class newscontroller {
             const { title } = req.body;
             const newsfound = await news.findOne({ Title: title })
             if (newsfound) {
+                const passdate = new Date(newsfound.Date);
+                const currentdate = new Date();
                 newsfound.total_views++;
+                if (newsfound.total_views > 100) {
+                    newnews.category = "top"
+                }
+                else if (newsfound.total_views > 50 && newsfound.total_views < 100) {
+                    newnews.category = "trending"
+                }
+                else if (passdate.toDateString() == currentdate.toDateString()) {
+                    newnews.category = "new"
+                }
+                else if (newsfound.total_views > 50 && passdate.toDateString() == currentdate.toDateString()) {
+                    newnews.category = "trending";
+                    console.log("same");
+                }
                 newsfound.save();
                 res.send("Views Incremented Successfully")
             }
@@ -54,7 +53,22 @@ class newscontroller {
             const { id } = req.body;
             const newsfound = await news.findById(id)
             if (newsfound) {
+                const passdate = new Date(newsfound.Date);
+                const currentdate = new Date();
                 newsfound.total_views++;
+                if (newsfound.total_views > 100) {
+                    newnews.category = "top"
+                }
+                else if (newsfound.total_views > 50 && newsfound.total_views < 100) {
+                    newnews.category = "trending"
+                }
+                else if (passdate.toDateString() == currentdate.toDateString()) {
+                    newnews.category = "new"
+                }
+                else if (newsfound.total_views > 50 && passdate.toDateString() == currentdate.toDateString()) {
+                    newnews.category = "trending";
+                    console.log("same");
+                }
                 newsfound.save();
                 res.send("Views Incremented Successfully")
             }
