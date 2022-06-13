@@ -23,7 +23,8 @@ const newsschema = mongoose.Schema({
         enum: ["politics", "crime", "tech", "sports", "health"]
     },
     total_views: {
-        type: Number
+        type: Number,
+        default: 0
     },
     category: {
         type: String,
