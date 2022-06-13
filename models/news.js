@@ -8,7 +8,7 @@ const newsschema = mongoose.Schema({
         type: String
     },
     Date: {
-        type: Date
+        type: String
     },
     Author: {
         type: String,
@@ -31,5 +31,5 @@ const newsschema = mongoose.Schema({
     }
 })
 
-const news = mongoose.model("news", "newsschema")
-export default news;
+const news = mongoose.model("news", newsschema)
+module.exports = news;
