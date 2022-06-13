@@ -7,7 +7,7 @@ const newsschema = mongoose.Schema({
     Description: {
         type: String
     },
-    Date: {
+    date: {
         type: String
     },
     Author: {
