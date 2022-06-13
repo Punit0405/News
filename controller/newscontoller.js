@@ -66,6 +66,9 @@ class newscontroller {
 
         }
     }
+    static searchNews = async (req,res)=>{
+        
+    }
 }
 
 module.exports = newscontroller;
